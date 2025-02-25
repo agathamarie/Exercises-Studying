@@ -43,7 +43,7 @@ function handleClick(botaoId) {
                 <label for="assentoCliente">Digite o número do assento: </label>
                 <input type="text" name="assentoCliente" id="assentoCliente">
 
-                <button type="button" onclick="javascript:reservarAssento();">Reservar</button>
+                <button type="button" onclick="reservarAssento(document.getElementById('nameAviao').value, document.getElementById('fileiraCliente').value, document.getElementById('assentoCliente').value);">Reservar</button>
                 `;
             result.appendChild(formReserva);
 
@@ -52,11 +52,13 @@ function handleClick(botaoId) {
             if (result != ''){
                 result.innerText = "";
             }
-            let formRastrear = document.createElement('p');
-            formRastrear.innerHTML =`
-                ${mapa}
+            let formRMapa = document.createElement('form');
+            formRMapa.innerHTML =`
+                <label for="nameAviao">Nome do Avião: </label>
+                <input type="text" name="nameAviao" id="nameAviao">
+                <button type="button" onclick="javascript:mostrarMapa(document.getElementById('nameAviao').value);">Ver Mapa</button>
                 `;
-            result.appendChild(formRastrear);
+            result.appendChild(formRMapa);
 
             break;
         case 'buttonSair':
@@ -65,24 +67,20 @@ function handleClick(botaoId) {
     }
 }
 
-const avioes = {}
-
+const avioes = [];
 
 function addAviao(){
     let nomeAviao = document.getElementById('nameAviao').value;
     let fileirasAviao = document.getElementById('fileirasAviao').value;
     let assentosAviao = document.getElementById('assentoFileira').value;
     
-    let mapaAviao = '';
-    let os = '';
-    for (let i = 0; i < assentosAviao; i++) {
-        os += 'O';
-    }
+    let mapaAviao = [];
     for (let i = 0; i < fileirasAviao; i++) {
-        mapaAviao += os;
-        if (i < fileirasAviao - 1) {
-            mapaAviao += ' <br> ';
+        let fileira = [];
+        for (let j = 0; j < assentosAviao; j++) {
+            fileira.push('O');
         }
+        mapaAviao.push(fileira);
     }
     
     let aviao = {
@@ -93,30 +91,47 @@ function addAviao(){
     }
     avioes.push(aviao);
 
-    alert('Avião adcionado com sucesso!')
+    alert('Avião adicionado com sucesso!');
+    console.log(avioes);
 }
 
-function reservarAssento(){
-    let nomeAviao = document.getElementById('nameAviao').value;
-    let fileiraCliente = document.getElementById('fileiraCliente').value;
-    let assentoCliente = document.getElementById('assentoCliente').value;
-
-    // Fazer a validação do aviao escolhido e tals
-
-    mapaList = mapa.split(' <br> ');
-    assentoEscolhido = mapaList[fileiraCliente][assentoCliente];
-
-    if(assentoEscolhido == 'X'){
-        alert('Assento já reservado, escolha outro!');
+function reservarAssento(nomeAviao, fileiraCliente, assentoCliente) {
+    let aviaoExistente = avioes.find(aviao => aviao.nome === nomeAviao);
+    
+    if (!aviaoExistente) {
+        alert('Avião não encontrado!');
+        return;
     }
-    alert('Assento livre e agora reservado!');
-    let str = mapaList[fileiraCliente];
-    let arr = str.split('');
-    arr[assentoCliente] = 'X';
-    list[fileiraCliente] = arr.join('');
+    fileiraCliente = parseInt(fileiraCliente);
+    assentoCliente = parseInt(assentoCliente);
+    
+    if (fileiraCliente < 1 || fileiraCliente > aviaoExistente.fileiras || assentoCliente < 1 || assentoCliente > aviaoExistente.assentos) {
+        alert('Fileira ou assento inválido!');
+        return;
+    }
 
-    let delemiter = '<br>'
-    let mapaNovo = delemiter.join(mapaList);
+    let mapa = aviaoExistente.mapa;
 
-    aviao = {...avioes, mapa: mapaNovo}
+    if (mapa[(fileiraCliente-1)][(assentoCliente-1)] === 'X') {
+        alert('Assento já reservado!');
+        return;
+    }
+
+    mapa[(fileiraCliente-1)][(assentoCliente-1)] = 'X';
+    alert('Assento reservado com sucesso!');
+    console.log(avioes);
+}
+
+function mostrarMapa(nomeAviao){
+    let aviaoExistente = avioes.find(aviao => aviao.nome === nomeAviao);
+    if (!aviaoExistente) {
+        alert('Avião não encontrado!');
+        return;
+    }
+
+    let mapa = aviaoExistente.mapa;
+    let mapaString = mapa.map(sublista => sublista.join(" ")).join("<br>");
+    let elementMapa = document.createElement('p');
+    elementMapa.innerHTML = `${mapaString}`;
+    result.appendChild(elementMapa);
 }
