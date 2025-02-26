@@ -57,7 +57,7 @@ function handleClick(botaoId) {
             break;
 
         case 'buttonSairTaxi':
-            resultTaxi.innerText = "";
+            window.location.href = '/main.html'
             break;
     }
 }

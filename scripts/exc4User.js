@@ -21,7 +21,7 @@ function handleClick(botaoId) {
             break;
 
         case 'buttonSairUser':
-            resultUser.innerText = "";
+            window.location.href = '/main.html'
             break;
     }
 }

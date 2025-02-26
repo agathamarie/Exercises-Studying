@@ -62,7 +62,7 @@ function handleClick(botaoId) {
 
             break;
         case 'buttonSair':
-            result.innerText = "";
+            window.location.href = '/main.html'
             break;
     }
 }
