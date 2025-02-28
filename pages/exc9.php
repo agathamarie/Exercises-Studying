@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/modelo.css">
 </head>
 <body>
+    <?php include('../template/header.php') ?>
+
     <h1>Controle de Senhas - Clínica Médica</h1>
 
     <div id="divButtons">

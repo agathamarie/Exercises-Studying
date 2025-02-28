@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/modelo.css">
 </head>
 <body>
+    <?php include('../template/header.php') ?>
+
     <h1>Controle de assentos de Aviões</h1>
 
     <div id="divButtons">

@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../css/modeloexc10.css">
 </head>
 <body>
+    <?php include('../template/header.php') ?>
+
+
     <h1>Simulador de Roleta do Tigrinho </h1>
 
     <div id="divButtons">

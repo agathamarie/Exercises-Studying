@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../css/modeloexc7.css">
 </head>
 <body>
-    
+    <?php include('../template/header.php') ?>
+
     <div id="menu">
         <h1>Menu do Restaurante:</h1>
         <p>Chocolate Cremoso - R$ 12,00</p>

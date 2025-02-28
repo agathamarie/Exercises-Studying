@@ -16,6 +16,8 @@
 
 </head>
 <body>
+    <?php include('../template/header.php') ?>
+
     <h1>Monitoramento de Temperatura</h1>
 
     <div id="divButtons">

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/modelo.css">
 </head>
 <body>
+    <?php include('../template/header.php') ?>
     
     <h1>Controle de Chamados de Suporte Técnico</h1>
 

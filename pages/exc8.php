@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../css/modelo.css">
 </head>
 <body>
+    <?php include('../template/header.php') ?>
+
+
     <h1>Conversor de Unidades </h1>
     <h2>Escolha o tipo de Conversão que deseja realizar: </h2>
 

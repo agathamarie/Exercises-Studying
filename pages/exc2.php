@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="../css/modelo.css">
 </head>
 <body>
+    <?php include('../template/header.php') ?>
+
     <h1>Rastreamento de Pacotes</h1>
 
     <div id="divButtons">
         <button id="addPacote">Adicionar pacote</button>
         <button id="updatePacote">Atualizar status do pacote</button>
         <button id="rastrearPacote">Rastrear pacote</button>
-        <button id="sair">Sair</button>
     </div>        
   
     <div id="results"></div>

@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../css/modelo.css">
 </head>
 <body>
+    <?php include('../template/header.php') ?>
+
+
     <h1>APP de Táxi</h1>
 
     <div id="divButtons">

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/modelo.css">
 </head>
 <body>
+    <?php include('../template/header.php') ?>
+
     <h1>Pedra, Papel ou Tesoura</h1>
 
     <div id="initial">
